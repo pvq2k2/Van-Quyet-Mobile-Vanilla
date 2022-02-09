@@ -1,0 +1,47 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer components {
+    /* Nav */
+    #nav-mobile-input:checked ~ .overlay {
+        @apply block;
+        animation: fadeIn linear 0.2s;
+    }
+    #nav-mobile-input:checked ~ #nav-mobile {
+        @apply translate-x-[0%] opacity-100;
+    }
+    @keyframes fadeIn {
+        from {
+            opacity: 0;
+        }
+        to {
+            opacity: 1;
+        }
+    }
+
+}
+    /* Dots Slider */
+    .slick-dots {
+        position: absolute;
+        bottom: 10px;
+        left: 50%;
+        transform: translateX(-50%);
+        align-items: center;
+        display: flex !important;
+        justify-content: center;
+        gap: 0 20px;
+    }
+    .slick-dots button {
+        font-size: 0;
+        width: 10px;
+        height: 10px;
+        border-radius: 100%;
+        background-color: #eee;
+        border: none;
+        outline: none;
+        transition: all 0.2s linear;
+    }
+    .slick-dots .slick-active button {
+        background-color: #f26629;
+    }
