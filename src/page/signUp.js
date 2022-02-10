@@ -5,52 +5,67 @@ const SignUpPage = {
     print() {
         return /* html */`
         ${Header.print()}
-        <div class="w-[1200px] mx-auto flex flex-wrap">
-
-        <!-- Register Section -->
-        <div class="w-full md:w-1/2 flex flex-col">
-
-            <!-- <div class="flex justify-center md:justify-start pt-12 md:pl-12 md:-mb-12">
-                <a href="#" class="bg-black text-white font-bold text-xl p-4" alt="Logo">Logo</a>
-            </div> -->
-
-            <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
-                <p class="text-center text-3xl">Join Us.</p>
-                <form class="flex flex-col pt-3 md:pt-8" id="form-signup" role="form" onsubmit="event.preventDefault();">
-                    <div class="flex flex-col pt-4">
-                        <label for="name" class="text-lg">Name</label>
-                        <input type="text" id="name" placeholder="John Smith" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
-                    </div>
-
-                    <div class="flex flex-col pt-4">
-                        <label for="email" class="text-lg">Email</label>
-                        <input type="email" id="email" placeholder="your@email.com" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
-                    </div>
-    
-                    <div class="flex flex-col pt-4">
-                        <label for="password" class="text-lg">Password</label>
-                        <input type="password" id="password" placeholder="Password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
-                    </div>
-
-                    <div class="flex flex-col pt-4">
-                        <label for="confirm-password" class="text-lg">Confirm Password</label>
-                        <input type="password" id="confirm-password" placeholder="Password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline" />
-                    </div>
-    
-                    <input type="submit" value="Register" class="bg-black text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8" />
-                </form>
-                <div class="text-center pt-12 pb-12">
-                    <p>Already have an account? <a href="/signin" class="underline font-semibold">Log in here.</a></p>
+        <div class="xl:w-[1200px] xl:mx-auto mt-10 shadow-inner rounded-lg mx-3">
+        <div class="content grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 shadow-lg">
+          <section class="hidden xl:flex lg:flex bg-[#e7f6fb] justify-center rounded-l-lg">
+            <img class="p-5 w-8/12 
+            xl:px-0 xl:py-40 xl:w-6/12
+            lg:px-20 lg:py-36 lg:w-11/12" src="https://res.cloudinary.com/assignmentjs/image/upload/v1644399101/img/login-bg_yyrdj7.png" alt="">
+          </section>
+          <section>
+            <div class="min-h-full flex items-center justify-center pb-12 px-4 sm:px-6 lg:px-8">
+              <div class="max-w-md w-full space-y-8">
+                <div>
+                  <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900 uppercase">Đăng Ký</h2>
+                  <p class="mt-2 text-center text-sm text-gray-600">
+                    Chú ý các nội dung có dấu * bạn cần phải nhập
+                  </p>
                 </div>
+                <form class="mt-8 space-y-6" action="#" method="POST">
+                  <input type="hidden" name="remember" value="true">
+                  <div class="rounded-md shadow-sm -space-y-px">
+                    <div class="mb-4">
+                      <label for="input-account-name" class="py-2">Tài khoản</label>
+                      <input id="input-account-name" name="input-account-name" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 mt-1 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-[#f26629] focus:border-[#f26629] focus:z-10 sm:text-sm" placeholder="Tài khoản*">
+                    </div>
+    
+                    <div class="pb-4">
+                      <label for="input-username" class="py-2">Họ tên</label>
+                      <input id="input-username" name="input-username" type="text" required class="appearance-none relative block w-full px-3 py-2 mt-1 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-[#f26629] focus:border-[#f26629] focus:z-10 sm:text-sm" placeholder="Họ tên*">
+                    </div>
+    
+                    <div class="pb-4">
+                      <label for="input-password" class="py-2">Mật khẩu</label>
+                      <input id="input-password" name="input-password" type="password" required class="appearance-none relative block w-full px-3 py-2 mt-1 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-[#f26629] focus:border-[#f26629] focus:z-10 sm:text-sm" placeholder="Mật khẩu*">
+                    </div>
+    
+                    <div class="pb-4">
+                      <label for="input-re-password" class="py-2">Nhập lại mật khẩu</label>
+                      <input id="input-re-password" name="input-repassword" type="password" required class="appearance-none relative block w-full px-3 py-2 mt-1 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-[#f26629] focus:border-[#f26629] focus:z-10 sm:text-sm" placeholder="Nhập lai mật khẩu*">
+                    </div>
+    
+                    <div class="pb-4">
+                      <label for="input-email" class="py-2">Email</label>
+                      <input id="input-email" name="input-email" type="email" required class="appearance-none relative block w-full px-3 py-2 mt-1 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md focus:outline-none focus:ring-[#f26629] focus:border-[#f26629] focus:z-10 sm:text-sm" placeholder="Email*">
+                    </div>
+    
+                    <div class="mb-4">
+                      <label for="input-avatar" class="py-2">Ảnh đại điện</label>
+                      <input id="input-avatar" name="input-avatar" type="file" required class="appearance-none rounded-none relative block w-full px-3 py-2 mt-1 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-[#f26629] focus:border-[#f26629] focus:z-10 sm:text-sm" placeholder="Ảnh đại diện">
+                    </div>
+                  </div>
+            
+                  <div>
+                    <button type="submit" class="group relative w-full flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#f26629] hover:bg-[#30a2e1] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                      Đăng ký
+                    </button>
+                  </div>
+                </form>
+              </div>
             </div>
-
+          </section>
         </div>
-
-        <!-- Image Section -->
-        <div class="w-1/2 shadow-2xl">
-            <img class="object-cover w-full h-screen hidden md:block" src="https://source.unsplash.com/IXUM4cJynP0" alt="Background" />
-        </div>
-    </div>
+      </div>
 ${Footer.print()}
         `;
     },

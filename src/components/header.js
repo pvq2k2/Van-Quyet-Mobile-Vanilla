@@ -123,7 +123,7 @@ const Header = {
           </div>
           <div class="header-left flex">
             <div class="logo">
-              <a href='#' target='_blank'><img src='https://i.postimg.cc/qtfvxTB5/logo.png' alt='logo' /></a>
+              <a href='/' target='_blank'><img src='https://i.postimg.cc/qtfvxTB5/logo.png' alt='logo' /></a>
             </div>
           </div>
           <div class="search 

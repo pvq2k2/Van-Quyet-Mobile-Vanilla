@@ -4,44 +4,59 @@ import Header from "../components/header";
 const SignInPage = {
     print() {
         return /* html */ `
-    ${Header.print()}
-    <div class="w-[1200px] mx-auto flex flex-wrap">
-        <!-- Image Section -->
-        <div class="w-1/2 shadow-2xl">
-            <img class="object-cover w-full h-screen hidden md:block" src="https://source.unsplash.com/IXUM4cJynP0">
-        </div>
-        <!-- Login Section -->
-        <div class="w-full md:w-1/2 flex flex-col">
-
-            <!-- <div class="flex justify-center md:justify-start pt-12 md:pl-12 md:-mb-24">
-                <a href="#" class="bg-black text-white font-bold text-xl p-4">Logo</a>
-            </div> -->
-
-            <div class="flex flex-col justify-center md:justify-start my-auto pt-8 md:pt-0 px-8 md:px-24 lg:px-32">
-                <p class="text-center text-3xl">Welcome.</p>
-                <form class="flex flex-col pt-3 md:pt-8" onsubmit="event.preventDefault();">
-                    <div class="flex flex-col pt-4">
-                        <label for="email" class="text-lg">Email</label>
-                        <input type="email" id="email" placeholder="your@email.com" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
-                    </div>
-    
-                    <div class="flex flex-col pt-4">
-                        <label for="password" class="text-lg">Password</label>
-                        <input type="password" id="password" placeholder="Password" class="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mt-1 leading-tight focus:outline-none focus:shadow-outline">
-                    </div>
-    
-                    <input type="submit" value="Log In" class="bg-black text-white font-bold text-lg hover:bg-gray-700 p-2 mt-8">
-                </form>
-                <div class="text-center pt-12 pb-12">
-                    <p>Don't have an account? <a href="/signup" class="underline font-semibold">Register here.</a></p>
+        ${Header.print()}
+        <div class="xl:w-[1200px] xl:mx-auto mt-10 shadow-inner rounded-lg mx-3">
+        <div class="content grid grid-cols-1 xl:grid-cols-2 lg:grid-cols-2 shadow-lg">
+          <section class="hidden xl:flex lg:flex bg-[#e7f6fb] justify-center rounded-l-lg">
+            <img class="p-5 w-8/12 
+            xl:px-0 xl:py-20 xl:w-6/12
+            lg:p-20 lg:w-11/12" src="https://res.cloudinary.com/assignmentjs/image/upload/v1644399101/img/login-bg_yyrdj7.png" alt="">
+          </section>
+          <section>
+            <div class="min-h-full flex items-center justify-center p-12 px-4 sm:px-6 lg:px-8">
+              <div class="max-w-md w-full space-y-8">
+                <div>
+                  <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900 uppercase">Đăng nhập</h2>
                 </div>
+                <form class="mt-8 space-y-6" action="#" method="POST">
+                  <input type="hidden" name="remember" value="true">
+                  <div class="rounded-md shadow-sm -space-y-px">
+                    <div class="mb-4">
+                      <label for="input-email" class="py-2">Email</label>
+                      <input id="input-email" name="input-email" type="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 mt-1 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-[#f26629] focus:border-[#f26629] focus:z-10 sm:text-sm" placeholder="Email">
+                    </div>
+                    <div class="mb-4">
+                      <label for="input-password" class="py-2">Mật khẩu</label>
+                      <input id="input-password" name="input-password" type="password" required class="appearance-none rounded-none relative block w-full px-3 py-2 mt-1 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-[#f26629] focus:border-[#f26629] focus:z-10 sm:text-sm" placeholder="Mật khẩu">
+                    </div>
+                  </div>
+            
+                  <div class="flex items-center justify-between">
+                    <div class="flex items-center">
+                      <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-[#f26629] focus:ring-[#f26629] border-gray-300 rounded">
+                      <label for="remember-me" class="ml-2 block text-sm text-gray-900"> Nhớ mật khẩu </label>
+                    </div>
+            
+                    <div class="text-sm">
+                      <a href="#" class="font-medium text-[#f26629] hover:text-[#30a2e1]"> Quên mật khẩu? </a>
+                    </div>
+                  </div>
+            
+                  <div class="grid grid-cols-2 gap-3">
+                    <button type="submit" class="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#f26629] hover:bg-[#30a2e1] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                      Đăng nhập
+                    </button>
+                    <a href="/signup" class="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-[#f26629] border-[#f26629] hover:border-[#30a2e1] hover:text-[#30a2e1] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                      Đăng ký
+                    </a>
+                  </div>
+                </form>
+              </div>
             </div>
-
+          </section>
         </div>
-        </div>
-${Footer.print()}
-
-        `;
+      </div>
+        ${Footer.print()}`;
     },
 };
 export default SignInPage;
