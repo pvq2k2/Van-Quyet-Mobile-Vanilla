@@ -1,4 +1,6 @@
 import Navigo from "navigo";
+import Dashboard from "./page/admin";
+import ProductsAdminPage from "./page/admin/products";
 import HomePage from "./page/home";
 import SignInPage from "./page/signIn";
 import SignUpPage from "./page/signUp";
@@ -15,13 +17,9 @@ router.on({
     "/": () => render(HomePage),
     "/signup": () => render(SignUpPage),
     "/signin": () => render(SignInPage),
-    // "/about": () => render(AboutPage),
-    // "/news": () => render(NewsPage),
-    // "/admin": () => render(Dashboard),
-    // "/admin/dashboard": () => render(Dashboard),
-    // "/admin/news": () => render(NewsAd),
-    // "/admin/news/add": () => render(NewsAdd),
-    // "/admin/news/:id/edit": (value) => render(newsEdit, value.data.id),
+    "/admin": () => render(Dashboard),
+    "/admin/dashboard": () => render(Dashboard),
+    "/admin/products": () => render(ProductsAdminPage),
 });
 // router.on("/about", function() {
 //     console.log("About")

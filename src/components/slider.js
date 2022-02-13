@@ -1,21 +1,20 @@
 import $ from "jquery";
 import "slick-carousel";
+import { getAllSliders } from "../api/sliders";
 
 const Slider = {
-    print() {
+    async print() {
+        const { data } = await getAllSliders();
         return /* html */`
         <div class="box-slider
         xl:w-[1200px] xl:mx-auto xl:px-0
-        px-3 mt-5">
+        px-3 mt-5 z-10">
         <div class="slider w-full group">
-          <div class="slider-item"><a href="#"><img class="rounded-xl"
-                src="https://res.cloudinary.com/assignmentjs/image/upload/v1644248754/slider/banner1_koj3i0.png"
-                alt=""></a></div>
-          <div class="slider-item"><a href="#"><img class="rounded-xl"
-                src="https://res.cloudinary.com/assignmentjs/image/upload/v1644248755/slider/banner2_ulbpjm.png"
-                alt=""></a></div>
-          <div class="slider-item"><a href="#"><img class="rounded-xl"
-                src="https://res.cloudinary.com/assignmentjs/image/upload/v1644248755/slider/banner3_t6cjtb.png" alt=""></a></div>
+        ${data.map(({ img }) => /* html */`
+        <div class="slider-item"><a href="#"><img class="rounded-xl"
+        src="${img}"
+        alt=""></a></div>
+        `).join("")}
         </div>
       </div>
       <!-- End slider -->

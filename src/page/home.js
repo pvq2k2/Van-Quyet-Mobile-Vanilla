@@ -5,12 +5,12 @@ import Nav from "../components/nav";
 import Slider from "../components/slider";
 
 const HomePage = {
-    print() {
+    async print() {
         return `
         ${Header.print()}
         ${Nav.print()}
-        ${Slider.print()}
-        ${listPhone.print()}
+        ${await Slider.print()}
+        ${await listPhone.print()}
         ${Footer.print()}
         `;
     },

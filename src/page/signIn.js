@@ -1,3 +1,4 @@
+import { signin } from "../api/users";
 import Footer from "../components/footer";
 import Header from "../components/header";
 
@@ -18,38 +19,39 @@ const SignInPage = {
                 <div>
                   <h2 class="mt-6 text-center text-3xl font-extrabold text-gray-900 uppercase">Đăng nhập</h2>
                 </div>
-                <form class="mt-8 space-y-6" action="#" method="POST">
+                <form class="mt-8 space-y-6" id="form-signin" action="#" method="POST">
                   <input type="hidden" name="remember" value="true">
                   <div class="rounded-md shadow-sm -space-y-px">
                     <div class="mb-4">
                       <label for="input-email" class="py-2">Email</label>
-                      <input id="input-email" name="input-email" type="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 mt-1 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-[#f26629] focus:border-[#f26629] focus:z-10 sm:text-sm" placeholder="Email">
+                      <input id="input-email" name="input-email" type="email" required class="appearance-none rounded-none relative block w-full px-3 py-2 mt-1 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md ease-in-out duration-300 hover:border-[#f26629] focus:outline-none focus:ring-[#f26629] focus:border-[#f26629] focus:z-10 sm:text-sm" placeholder="Email">
                     </div>
                     <div class="mb-4">
                       <label for="input-password" class="py-2">Mật khẩu</label>
-                      <input id="input-password" name="input-password" type="password" required class="appearance-none rounded-none relative block w-full px-3 py-2 mt-1 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-[#f26629] focus:border-[#f26629] focus:z-10 sm:text-sm" placeholder="Mật khẩu">
+                      <input id="input-password" name="input-password" type="password" required class="appearance-none rounded-none relative block w-full px-3 py-2 mt-1 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md ease-in-out duration-300 hover:border-[#f26629] focus:outline-none focus:ring-[#f26629] focus:border-[#f26629] focus:z-10 sm:text-sm" placeholder="Mật khẩu">
                     </div>
                   </div>
             
                   <div class="flex items-center justify-between">
                     <div class="flex items-center">
-                      <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-[#f26629] focus:ring-[#f26629] border-gray-300 rounded">
+                      <input id="remember-me" name="remember-me" type="checkbox" class="h-4 w-4 text-[#f26629] ease-in-out duration-300 focus:ring-[#f26629] border-gray-300 rounded">
                       <label for="remember-me" class="ml-2 block text-sm text-gray-900"> Nhớ mật khẩu </label>
                     </div>
             
                     <div class="text-sm">
-                      <a href="#" class="font-medium text-[#f26629] hover:text-[#30a2e1]"> Quên mật khẩu? </a>
+                      <a href="#" class="font-medium text-[#f26629] ease-in-out duration-300 hover:text-[#30a2e1]"> Quên mật khẩu? </a>
                     </div>
                   </div>
             
-                  <div class="grid grid-cols-2 gap-3">
-                    <button type="submit" class="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#f26629] hover:bg-[#30a2e1] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
+                  <div>
+                    <button type="submit" class="group w-full relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-white bg-[#f26629] hover:bg-[#30a2e1] ease-in-out duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                       Đăng nhập
                     </button>
-                    <a href="/signup" class="group relative flex justify-center py-2 px-4 border border-transparent text-sm font-medium rounded-md text-[#f26629] border-[#f26629] hover:border-[#30a2e1] hover:text-[#30a2e1] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                      Đăng ký
-                    </a>
                   </div>
+                  <p class="mt-3 text-center text-sm text-gray-600">
+                  Bạn chưa có tài khoản? 
+                  <a href="/signup" class="font-medium ease-in-out duration-300 text-[#f26629] hover:text-[#30a2e1]"> Đăng ký </a>
+                </p>
                 </form>
               </div>
             </div>
@@ -57,6 +59,16 @@ const SignInPage = {
         </div>
       </div>
         ${Footer.print()}`;
+    },
+    afterRender() {
+        const formSignIn = document.querySelector("#form-signin");
+        formSignIn.addEventListener("submit", (e) => {
+            e.preventDefault();
+            signin({
+                email: document.querySelector("#input-email").value,
+                password: document.querySelector("#input-password").value,
+            });
+        });
     },
 };
 export default SignInPage;

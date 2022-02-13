@@ -7,7 +7,7 @@ const Header = {
         <label for="nav-mobile-input" class="overlay  
           lg:hidden 
           xl:hidden 
-          hidden fixed top-0 right-0 left-0 bottom-0 bg-black/30
+          hidden fixed top-0 right-0 left-0 bottom-0 bg-black/30 z-20
           "></label>
         <nav id="nav-mobile" class="nav-mobile z-50 xl:hidden lg:hidden 
           block fixed top-0 left-0 bottom-0 w-320px max-w-full bg-white translate-x-[-100%] opacity-0
@@ -170,7 +170,7 @@ const Header = {
                 <ul>
                   <li class="rounded-lg hover:bg-[#f26629] hover:text-white"><a class="inline-block p-2" href="/signin">Đăng nhập</a></li>
                   <li class="rounded-lg hover:bg-[#f26629] hover:text-white"><a class="inline-block p-2" href="/signup">Đăng ký</a></li>
-                  <li class="rounded-lg hover:bg-[#f26629] hover:text-white"><a class="inline-block p-2" href="#">Trang quản trị</a></li>
+                  <li class="rounded-lg hover:bg-[#f26629] hover:text-white"><a class="inline-block p-2" href="/admin">Trang quản trị</a></li>
                   <li class="rounded-lg hover:bg-[#f26629] hover:text-white"><a class="inline-block p-2" href="#">Đăng xuất</a></li>
                 </ul>
               </div>
