@@ -1,5 +1,6 @@
 import $ from "jquery";
 import "slick-carousel";
+import "slick-carousel/slick/slick.css";
 import { getAllSliders } from "../api/sliders";
 
 const Slider = {
