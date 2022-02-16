@@ -1,6 +1,8 @@
+import toastr from "toastr";
 import { signin } from "../api/users";
 import Footer from "../components/footer";
 import Header from "../components/header";
+import "toastr/build/toastr.min.css";
 
 const SignInPage = {
     print() {
@@ -62,12 +64,27 @@ const SignInPage = {
     },
     afterRender() {
         const formSignIn = document.querySelector("#form-signin");
-        formSignIn.addEventListener("submit", (e) => {
+        formSignIn.addEventListener("submit", async (e) => {
             e.preventDefault();
-            signin({
-                email: document.querySelector("#input-email").value,
-                password: document.querySelector("#input-password").value,
-            });
+            try {
+                const { data } = await signin({
+                    email: document.querySelector("#input-email").value,
+                    password: document.querySelector("#input-password").value,
+                });
+                if (data) {
+                    localStorage.setItem("user", JSON.stringify(data.user));
+                    toastr.success("Login successfully!");
+                    setTimeout(() => {
+                        if (data.user.id === 1) {
+                            document.location.href = "/admin";
+                        } else {
+                            document.location.href = "/";
+                        }
+                    }, 2000);
+                }
+            } catch (error) {
+                toastr.error(`Error: ${error.response.data}`);
+            }
         });
     },
 };

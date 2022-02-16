@@ -7,7 +7,9 @@ const NavAdmin = {
             <div class="flex items-center justify-between h-16">
               <div class="flex items-center">
                 <div class="flex-shrink-0">
+                <a href="/">
                   <img class="h-10 w-10" src="https://res.cloudinary.com/assignmentjs/image/upload/v1644248903/img/logoc_tixge3.png">
+                </a>
                 </div>
                 <div class="hidden md:block">
                   <div class="ml-10 flex items-baseline space-x-4">

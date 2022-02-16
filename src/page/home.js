@@ -6,8 +6,10 @@ import Slider from "../components/slider";
 
 const HomePage = {
     async print() {
-        return `
+        return /* html */`
+        <header>
         ${Header.print()}
+        </header>
         ${Nav.print()}
         ${await Slider.print()}
         ${await listPhone.print()}
@@ -16,6 +18,7 @@ const HomePage = {
     },
     afterRender() {
         Slider.afterRender();
+        Header.afterRender();
     },
 };
 

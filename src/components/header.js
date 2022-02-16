@@ -1,7 +1,8 @@
+import { reRender } from "../utils/rerender";
+
 const Header = {
     print() {
-        return /* html */`
-        <header>
+        return /* html */ `
         <!-- Nav mobile-tablet -->
         <input type="checkbox" hidden id="nav-mobile-input">
         <label for="nav-mobile-input" class="overlay  
@@ -14,15 +15,40 @@ const Header = {
           transition-all ease-linear duration-200
           ">
           <div class="w-[320px]">
-            <label for="nav-mobile-input" class="nav-mobile-close absolute top-[20px] right-[10px]">
+            <label for="nav-mobile-input" class="nav-mobile-close absolute top-[7px] right-[12px]">
               <svg xmlns="http://www.w3.org/2000/svg"
                 class="text-gray-600 hover:text-[#f26629] ease-in-out duration-300 h-7 w-7" fill="none"
                 viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
               </svg>
             </label>
-            <div class="user py-[10px] px-3 flex">
-              <div>
+
+
+
+            <div class="user p-[10px] flex">
+            ${
+    localStorage.getItem("user")
+        ? `
+          <div class="my-auto">
+            <a href="#" class="text-gray-600 hover:text-[#f26629] ease-in-out duration-300">
+            <img class="h-10 w-10 rounded-3xl" id="user-img-mobile" alt="">
+            </a>
+          </div>
+          <div class="pl-2">
+          <div class="text-sm text-gray-500 pl-1">
+                  Xin chào <span class="text-base font-medium text-gray-900" id="user-name-mobile"></span> !
+          </div>
+          <ul class="pt-1 w-[228px]">
+          <li class="inline-block px-2 py-1 hover:bg-[#f26629] rounded-lg group ease-in-out duration-300">            <a href="/admin"
+          class="inline-block text-black font-bold text-[15px] group-hover:text-white  ease-in-out duration-300">Trang quản trị</a></li>
+          <li class="inline-block after:border-r-2"></li>
+          <li class="inline-block px-2 py-1 hover:bg-[#f26629] rounded-lg cursor-pointer group ease-in-out duration-300">            <span id="logout"
+          class="inline-block text-black font-bold text-[15px] group-hover:text-white  ease-in-out duration-300">Đăng xuất</span></li>
+          </ul>
+          </div>
+            `
+        : /* html */ `
+                <div>
                 <a href="#" class="text-gray-600 hover:text-[#f26629] ease-in-out duration-300">
                   <svg xmlns="http://www.w3.org/2000/svg" class="h-14 w-14" fill="none" viewBox="0 0 24 24"
                     stroke="currentColor">
@@ -31,12 +57,17 @@ const Header = {
                   </svg>
                 </a>
               </div>
-              <div>
-                <a href="#"
-                  class="block text-black font-bold text-[19px] p-3 hover:text-[#f26629] ease-in-out duration-300">Đăng
+              <div class="pl-2">
+                <a href="/signin"
+                  class="block text-black font-bold text-[19px] hover:text-[#f26629] ease-in-out duration-300">Đăng
                   nhập</a>
-              </div>
+                  <span class="text-sm">Đăng nhập để nhận nhiều ưu đãi</span>
+              </div>`
+}
             </div>
+
+
+
             <div class="search py-[10px] px-3 relative block">
               <input type="text" placeholder="Bạn cần tìm gì..."
                 class="border-[1px] border-gray-400 indent-[5px] p-2 pr-14 w-full rounded-[20px] focus:outline-none focus:border-[#f26629] hover:border-[#f26629] ease-in-out duration-300">
@@ -151,28 +182,37 @@ const Header = {
                     d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
               </a>
-              <div class="in-up--sub absolute top-12 left-[-15px] bg-white shadow-xl z-20 p-3 rounded-lg invisible ease-linear duration-300 group-hover:visible
-              before:absolute before:-top-2 before:left-5 
+              <div class="in-up--sub absolute top-12 bg-white shadow-xl z-20 p-3 rounded-lg invisible ease-linear duration-300 w-60 xl:left-[-15px] lg:right-[-96px]  group-hover:visible
+              before:absolute before:-top-2 xl:before:left-5 before:lg:left-[120px]
               before:w-5 before:h-5 before:bg-white before:rounded before:rotate-45 before:-z-10  before:shadow-xl">
-                <div class="flex items-center pb-3 xl:w-40 lg:w-[120px]">
-                  <div class="flex-shrink-0 h-10 w-10">
-                    <img class="h-10 w-10 rounded-full" src="https://images.unsplash.com/photo-1570295999919-56ceb5ecca61?ixlib=rb-1.2.1&amp;ixid=eyJhcHBfaWQiOjEyMDd9&amp;auto=format&amp;fit=facearea&amp;facepad=4&amp;w=256&amp;h=256&amp;q=60" alt="">
-                  </div>
-                  <div class="ml-4">
-                    <div class="text-sm text-gray-500">
-                      Xin chào !
-                    </div>
-                    <div class="text-sm font-medium text-gray-900">
-                      Quyết
-                    </div>
-                  </div>
+              ${
+    localStorage.getItem("user")
+        ? `
+              <div class="flex items-center pb-3 w-full">
+              <div class="flex-shrink-0 h-10 w-10">
+                <img class="h-10 w-10 rounded-full" id="user-img" alt="">
+              </div>
+              <div class="ml-4">
+                <div class="text-sm text-gray-500">
+                  Xin chào !
                 </div>
-                <ul>
-                  <li class="rounded-lg hover:bg-[#f26629] hover:text-white"><a class="inline-block p-2" href="/signin">Đăng nhập</a></li>
-                  <li class="rounded-lg hover:bg-[#f26629] hover:text-white"><a class="inline-block p-2" href="/signup">Đăng ký</a></li>
-                  <li class="rounded-lg hover:bg-[#f26629] hover:text-white"><a class="inline-block p-2" href="/admin">Trang quản trị</a></li>
-                  <li class="rounded-lg hover:bg-[#f26629] hover:text-white"><a class="inline-block p-2" href="#">Đăng xuất</a></li>
-                </ul>
+                <div class="text-sm font-medium text-gray-900">
+                  <span id="user-name"></span>
+                </div>
+              </div>
+            </div>
+            <ul>
+            <li class="rounded-lg hover:bg-[#f26629] hover:text-white"><a class="inline-block p-2" href="/admin">Trang quản trị</a></li>
+            <li class="rounded-lg hover:bg-[#f26629] hover:text-white cursor-pointer" id="logout"><span class="inline-block p-2">Đăng xuất</span></li>
+           </ul>
+            `
+        : `<ul>
+            <li class="rounded-lg hover:bg-[#f26629] hover:text-white"><a class="inline-block p-2" href="/signin">Đăng nhập</a></li>
+            <li class="rounded-lg hover:bg-[#f26629] hover:text-white"><a class="inline-block p-2" href="/signup">Đăng ký</a></li>
+           </ul>`
+}
+
+
               </div>
             </div>
             <div class="check-order lg:block xl:block hidden">
@@ -197,8 +237,24 @@ const Header = {
           </div>
         </div>
   
-      </header>
+
         `;
+    },
+    afterRender() {
+        const userName = document.querySelector("#user-name");
+        const userImg = document.querySelector("#user-img");
+        const userNameMobile = document.querySelector("#user-name-mobile");
+        const userImgMobile = document.querySelector("#user-img-mobile");
+        userName.innerHTML = JSON.parse(localStorage.getItem("user")).userName;
+        userImg.src = JSON.parse(localStorage.getItem("user")).avatar;
+        userNameMobile.innerHTML = JSON.parse(localStorage.getItem("user")).userName;
+        userImgMobile.src = JSON.parse(localStorage.getItem("user")).avatar;
+
+        const logout = document.querySelector("#logout");
+        logout.addEventListener("click", () => {
+            localStorage.removeItem("user");
+            reRender(Header, "header");
+        });
     },
 };
 

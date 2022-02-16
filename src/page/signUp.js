@@ -1,4 +1,6 @@
 import axios from "axios";
+import toastr from "toastr";
+import "toastr/build/toastr.min.css";
 import { signup } from "../api/users";
 import Footer from "../components/footer";
 import Header from "../components/header";
@@ -82,7 +84,7 @@ ${Footer.print()}
         const inputAvatar = document.querySelector("#input-avatar");
         const CLOUDINARY_API = "https://api.cloudinary.com/v1_1/assignmentjs/image/upload";
         const CLOUDINARY_PRESET = "imguser";
-        formSignUp.addEventListener("submit", (e) => {
+        formSignUp.addEventListener("submit", async (e) => {
             e.preventDefault();
             const file = inputAvatar.files[0];
 
@@ -90,12 +92,13 @@ ${Footer.print()}
             formData.append("file", file);
             formData.append("upload_preset", CLOUDINARY_PRESET);
 
-            axios.post(CLOUDINARY_API, formData, {
+            const response = await axios.post(CLOUDINARY_API, formData, {
                 headers: {
                     "Content-Type": "application/form-data",
                 },
-            }).then((response) => {
-                signup({
+            });
+            try {
+                const { data } = await signup({
                     accountName: document.querySelector("#input-account-name").value,
                     userName: document.querySelector("#input-username").value,
                     password: document.querySelector("#input-password").value,
@@ -103,11 +106,16 @@ ${Footer.print()}
                     email: document.querySelector("#input-email").value,
                     avatar: response.data.url,
                 });
-                setTimeout(() => {
-                    document.location.href = "/signin";
-                    reRender(SignInPage, "#app");
-                }, 2500);
-            });
+                if (data) {
+                    toastr.success("Signup successfully!");
+                    setTimeout(() => {
+                        document.location.href = "/signin";
+                        reRender(SignInPage, "#app");
+                    }, 2500);
+                }
+            } catch (error) {
+                toastr.error(`Error: ${error.response.data}`);
+            }
         });
     },
 };

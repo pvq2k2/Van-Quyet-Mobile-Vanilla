@@ -77,21 +77,21 @@
   ],
   "users": [
     {
-      "email": "hao@gmail.com",
-      "password": "$2a$10$7Rip/0pdbD0jX20Up8L0z.U6q/TjJdw3EL0Wd1w2QsRmnDI8yZjUa",
-      "accountName": "hao",
-      "userName": "Hào",
-      "rePassword": "12345",
-      "avatar": "http://res.cloudinary.com/assignmentjs/image/upload/v1644574384/imguser/pbahcyfmh3knha6yxdpx.png",
+      "email": "quyetpvph15476@fpt.edu.vn",
+      "password": "$2a$10$TAPhimt1vKa3wqrJJn2yxOOMcIH/nMuWiQpoGZC2JQg5jIMPmaDV2",
+      "accountName": "admin",
+      "userName": "Phạm Văn Quyết",
+      "rePassword": "178202",
+      "avatar": "http://res.cloudinary.com/assignmentjs/image/upload/v1644760791/imguser/ijdwimzs4s0jvxrpqcen.png",
       "id": 1
     },
     {
-      "email": "quyetpvph15476@fpt.edu.vn",
-      "password": "$2a$10$8Dz9C/zBRNM/LzfE/TCexOwocmtsweejgkbL2diXFvT8uyUo/TIr2",
-      "accountName": "qwerty",
-      "userName": "Quyết",
+      "email": "linh@gmail.com",
+      "password": "$2a$10$p1YzB.hmvRqOC842T2RtN.SlzdDO5ihpZHqiyUVWnh7es5kFqUMHC",
+      "accountName": "linh",
+      "userName": "Hào",
       "rePassword": "12345",
-      "avatar": "http://res.cloudinary.com/assignmentjs/image/upload/v1644574527/imguser/pfx23koomlsyfdnjps6s.png",
+      "avatar": "http://res.cloudinary.com/assignmentjs/image/upload/v1644918829/imguser/enikqjtk2ukxfbcnfabe.png",
       "id": 2
     }
   ]
