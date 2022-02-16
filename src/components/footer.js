@@ -52,16 +52,16 @@ const Footer = {
                     <h4 class="text-[15px] font-bold py-[10px]">Thanh toán miễn phí</h4>
                     <ul>
                         <li class="flex gap-1 pb-1">
-                            <img src="https://res.cloudinary.com/assignmentjs/image/upload/v1644248850/footer/logo-visa_o2d0lv.png" alt="">
-                            <img src="https://res.cloudinary.com/assignmentjs/image/upload/v1644248850/footer/logo-master_roande.png" alt="">
+                            <img src="https://res.cloudinary.com/assignmentjs/image/upload/v1644248850/img/logo-visa_o2d0lv.png" alt="">
+                            <img src="https://res.cloudinary.com/assignmentjs/image/upload/v1644248850/img/logo-master_roande.png" alt="">
                         </li>
                         <li class="flex gap-1 pb-1">
-                            <img src="https://res.cloudinary.com/assignmentjs/image/upload/v1644248850/footer/logo-jcb_i0jky6.png" alt="">
-                            <img src="https://res.cloudinary.com/assignmentjs/image/upload/v1644248850/footer/logo-samsungpay_nf2vjv.png" alt="">
+                            <img src="https://res.cloudinary.com/assignmentjs/image/upload/v1644248850/img/logo-jcb_i0jky6.png" alt="">
+                            <img src="https://res.cloudinary.com/assignmentjs/image/upload/v1644248850/img/logo-samsungpay_nf2vjv.png" alt="">
                         </li>
                         <li class="flex gap-1 pb-1">
-                            <img src="https://res.cloudinary.com/assignmentjs/image/upload/v1644248850/footer/logo-atm_fjrs4t.png" alt="">
-                            <img src="https://res.cloudinary.com/assignmentjs/image/upload/v1644248851/footer/logo-vnpay_w7b9ie.png" alt="">
+                            <img src="https://res.cloudinary.com/assignmentjs/image/upload/v1644248850/img/logo-atm_fjrs4t.png" alt="">
+                            <img src="https://res.cloudinary.com/assignmentjs/image/upload/v1644248851/img/logo-vnpay_w7b9ie.png" alt="">
                         </li>
                     </ul>
                 </div>
@@ -70,12 +70,12 @@ const Footer = {
                     <h4 class="text-[15px] font-bold py-[10px]">Hình thức vận chuyển</h4>
                     <ul>
                         <li class="flex gap-1 pb-1">
-                            <img src="https://res.cloudinary.com/assignmentjs/image/upload/v1644248851/footer/nhattin_myipbf.jpg" alt="">
-                            <img src="https://res.cloudinary.com/assignmentjs/image/upload/v1644248851/footer/vnpost_ajg6tx.jpg" alt="">
+                            <img src="https://res.cloudinary.com/assignmentjs/image/upload/v1644248851/img/nhattin_myipbf.jpg" alt="">
+                            <img src="https://res.cloudinary.com/assignmentjs/image/upload/v1644248851/img/vnpost_ajg6tx.jpg" alt="">
                         </li>
                     </ul>
                     <div class="logo-bct pt-5">
-                        <img src="https://res.cloudinary.com/assignmentjs/image/upload/v1644248850/footer/logo-bct_c4urdp.png" alt="">
+                        <img src="https://res.cloudinary.com/assignmentjs/image/upload/v1644248850/img/logo-bct_c4urdp.png" alt="">
                     </div>
                 </div>
             </div>
