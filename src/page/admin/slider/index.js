@@ -1,25 +1,25 @@
 import toastr from "toastr";
-import { getAllProducts, removeProduct } from "../../../api/products";
+import { getAllSliders, removeSlider } from "../../../api/sliders";
 import NavAdmin from "../../../components/navAdmin";
 import { reRender } from "../../../utils/rerender";
 import "toastr/build/toastr.min.css";
 
-const ProductsAdminPage = {
+const SliderAdminPage = {
     async print() {
-        const { data } = await getAllProducts();
+        const { data } = await getAllSliders();
         return /* html */`
         ${NavAdmin.print()}
         <header class="bg-white shadow">
         <div class="max-w-7xl mx-auto py-6 px-4 sm:px-6 lg:px-8 flex justify-between">
           <h1 class="text-3xl font-bold text-gray-900">
-            Product List
+            Slider List
           </h1>
-          <a href="/admin/products/add" class="sm:ml-3">
+          <a href="/admin/sliders/add" class="sm:ml-3">
         <button type="button" class="inline-flex items-center px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
         <svg class="-ml-1 mr-2 h-5 w-5" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
         <path fill-rule="evenodd" d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z" clip-rule="evenodd" />
         </svg>
-          Add Product
+          Add Slider
         </button>
       </a>
         </div>
@@ -37,45 +37,27 @@ const ProductsAdminPage = {
                     STT
                   </th>
                   <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Title
+                    Img
                   </th>
                   <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Image
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Price
-                  </th>
-                  <th scope="col" class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
-                    Controls
+                  Controls
                   </th>
                 </tr>
               </thead>
               <tbody class="bg-white divide-y divide-gray-200">
-                ${data.map(({
-        id, title, img, price,
-    }, index) => /* html */`
+                ${data.map(({ id, img }, index) => /* html */`
                   <tr>
                   <td class="px-6 py-4 whitespace-nowrap">
                     <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-orange-100 text-orange-500">
                       ${index + 1}
                     </span>
                   </td>
-                  <td class="px-6 py-4 whitespace-nowrap">
-                  <span class="px-2 inline-flex text-sm leading-5 font-semibold">
-                    ${title}
-                  </span>
-                </td>
-                <td class="px-6 py-4 whitespace-nowrap w-52">
-                <img width="50%" src="${img}">
-              </td>
-              <td class="px-6 py-4 whitespace-nowrap">
-              <span class="px-2 inline-flex text-sm leading-5 font-semibold">
-                ${price}
-              </span>
+              <td class="px-6 py-4 whitespace-nowrap w-[900px]">
+              <img width="100%" src="${img}">
             </td>
             <td class="px-6 py-4 text-sm font-medium">
             <button class=" text-indigo-600 hover:text-indigo-900">
-            <a href="/admin/products/${id}/edit">
+            <a href="/admin/sliders/${id}/edit">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-5" viewBox="0 0 20 20" fill="currentColor">
             <path d="M17.414 2.586a2 2 0 00-2.828 0L7 10.172V13h2.828l7.586-7.586a2 2 0 000-2.828z" />
             <path fill-rule="evenodd" d="M2 6a2 2 0 012-2h4a1 1 0 010 2H4v10h10v-4a1 1 0 112 0v4a2 2 0 01-2 2H4a2 2 0 01-2-2V6z" clip-rule="evenodd" />
@@ -109,12 +91,12 @@ const ProductsAdminPage = {
             btn.addEventListener("click", () => {
                 const confirm = window.confirm("Are you sure you want to delete this item?");
                 if (confirm) {
-                    removeProduct(id);
+                    removeSlider(id);
                     toastr.success("Delete item successfully!");
-                    reRender(ProductsAdminPage, "#app");
+                    reRender(SliderAdminPage, "#app");
                 }
             });
         });
     },
 };
-export default ProductsAdminPage;
+export default SliderAdminPage;

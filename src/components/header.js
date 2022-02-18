@@ -31,19 +31,19 @@ const Header = {
         ? `
           <div class="my-auto">
             <a href="#" class="text-gray-600 hover:text-[#f26629] ease-in-out duration-300">
-            <img class="h-10 w-10 rounded-3xl" id="user-img-mobile" alt="">
+            <img class="user-img h-10 w-10 rounded-3xl" alt="">
             </a>
           </div>
           <div class="pl-2">
           <div class="text-sm text-gray-500 pl-1">
-                  Xin chào <span class="text-base font-medium text-gray-900" id="user-name-mobile"></span> !
+                  Xin chào <span class="user-name text-base font-medium text-gray-900"></span> !
           </div>
           <ul class="pt-1 w-[228px]">
           <li class="inline-block px-2 py-1 hover:bg-[#f26629] rounded-lg group ease-in-out duration-300">            <a href="/admin"
           class="inline-block text-black font-bold text-[15px] group-hover:text-white  ease-in-out duration-300">Trang quản trị</a></li>
           <li class="inline-block after:border-r-2"></li>
-          <li class="inline-block px-2 py-1 hover:bg-[#f26629] rounded-lg cursor-pointer group ease-in-out duration-300">            <span id="logout"
-          class="inline-block text-black font-bold text-[15px] group-hover:text-white  ease-in-out duration-300">Đăng xuất</span></li>
+          <li class="inline-block px-2 py-1 hover:bg-[#f26629] rounded-lg cursor-pointer group ease-in-out duration-300">            <span
+          class="logout inline-block text-black font-bold text-[15px] group-hover:text-white  ease-in-out duration-300">Đăng xuất</span></li>
           </ul>
           </div>
             `
@@ -175,13 +175,13 @@ const Header = {
           </div>
           <div class="header-right flex gap-5 mt-4">
             <div class="in-up lg:block xl:block md:hidden hidden relative h-7 w-7 group">
-              <a href="#" class="text-gray-400 group-hover:text-[#f26629] ease-in-out duration-300">
+              <span class="text-gray-400 group-hover:text-[#f26629] ease-in-out duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
                   stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                     d="M5.121 17.804A13.937 13.937 0 0112 16c2.5 0 4.847.655 6.879 1.804M15 10a3 3 0 11-6 0 3 3 0 016 0zm6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
-              </a>
+              </span>
               <div class="in-up--sub absolute top-12 bg-white shadow-xl z-20 p-3 rounded-lg invisible ease-linear duration-300 w-60 xl:left-[-15px] lg:right-[-96px]  group-hover:visible
               before:absolute before:-top-2 xl:before:left-5 before:lg:left-[120px]
               before:w-5 before:h-5 before:bg-white before:rounded before:rotate-45 before:-z-10  before:shadow-xl">
@@ -190,20 +190,20 @@ const Header = {
         ? `
               <div class="flex items-center pb-3 w-full">
               <div class="flex-shrink-0 h-10 w-10">
-                <img class="h-10 w-10 rounded-full" id="user-img" alt="">
+                <img class="user-img h-10 w-10 rounded-full" alt="">
               </div>
               <div class="ml-4">
                 <div class="text-sm text-gray-500">
                   Xin chào !
                 </div>
-                <div class="text-sm font-medium text-gray-900">
-                  <span id="user-name"></span>
+                <div>
+                  <span class="user-name text-sm font-medium text-gray-900"></span>
                 </div>
               </div>
             </div>
             <ul>
             <li class="rounded-lg hover:bg-[#f26629] hover:text-white"><a class="inline-block p-2" href="/admin">Trang quản trị</a></li>
-            <li class="rounded-lg hover:bg-[#f26629] hover:text-white cursor-pointer" id="logout"><span class="inline-block p-2">Đăng xuất</span></li>
+            <li class="logout rounded-lg hover:bg-[#f26629] hover:text-white cursor-pointer"><span class="inline-block p-2">Đăng xuất</span></li>
            </ul>
             `
         : `<ul>
@@ -241,20 +241,26 @@ const Header = {
         `;
     },
     afterRender() {
-        const userName = document.querySelector("#user-name");
-        const userImg = document.querySelector("#user-img");
-        const userNameMobile = document.querySelector("#user-name-mobile");
-        const userImgMobile = document.querySelector("#user-img-mobile");
-        userName.innerHTML = JSON.parse(localStorage.getItem("user")).userName;
-        userImg.src = JSON.parse(localStorage.getItem("user")).avatar;
-        userNameMobile.innerHTML = JSON.parse(localStorage.getItem("user")).userName;
-        userImgMobile.src = JSON.parse(localStorage.getItem("user")).avatar;
-
-        const logout = document.querySelector("#logout");
-        logout.addEventListener("click", () => {
-            localStorage.removeItem("user");
-            reRender(Header, "header");
-        });
+        const userNames = document.querySelectorAll(".user-name");
+        const userImgs = document.querySelectorAll(".user-img");
+        const logouts = document.querySelectorAll(".logout");
+        if (localStorage) {
+            // eslint-disable-next-line no-restricted-syntax
+            for (const userName of userNames) {
+                userName.innerHTML = JSON.parse(localStorage.getItem("user")).userName;
+            }
+            // eslint-disable-next-line no-restricted-syntax
+            for (const userImg of userImgs) {
+                userImg.src = JSON.parse(localStorage.getItem("user")).avatar;
+            }
+            // eslint-disable-next-line no-restricted-syntax
+            for (const logout of logouts) {
+                logout.addEventListener("click", () => {
+                    localStorage.removeItem("user");
+                    reRender(Header, "header");
+                });
+            }
+        }
     },
 };
 

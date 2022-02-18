@@ -30,10 +30,6 @@ const SignUpPage = {
                 <form class="mt-8 space-y-6" id="form-signup" action="#" method="POST">
                   <input type="hidden" name="remember" value="true">
                   <div class="rounded-md shadow-sm -space-y-px">
-                    <div class="mb-4">
-                      <label for="input-account-name" class="py-2">Tài khoản</label>
-                      <input id="input-account-name" name="input-account-name" type="text" required class="appearance-none rounded-none relative block w-full px-3 py-2 mt-1 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md ease-in-out duration-300 hover:border-[#f26629] focus:outline-none focus:ring-[#f26629] focus:border-[#f26629] focus:z-10 sm:text-sm" placeholder="Tài khoản*">
-                    </div>
     
                     <div class="pb-4">
                       <label for="input-username" class="py-2">Họ tên</label>
@@ -43,11 +39,6 @@ const SignUpPage = {
                     <div class="pb-4">
                       <label for="input-password" class="py-2">Mật khẩu</label>
                       <input id="input-password" name="input-password" type="password" required class="appearance-none relative block w-full px-3 py-2 mt-1 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md ease-in-out duration-300 hover:border-[#f26629] focus:outline-none focus:ring-[#f26629] focus:border-[#f26629] focus:z-10 sm:text-sm" placeholder="Mật khẩu*">
-                    </div>
-    
-                    <div class="pb-4">
-                      <label for="input-re-password" class="py-2">Nhập lại mật khẩu</label>
-                      <input id="input-re-password" name="input-repassword" type="password" required class="appearance-none relative block w-full px-3 py-2 mt-1 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-md ease-in-out duration-300 hover:border-[#f26629] focus:outline-none focus:ring-[#f26629] focus:border-[#f26629] focus:z-10 sm:text-sm" placeholder="Nhập lai mật khẩu*">
                     </div>
     
                     <div class="pb-4">
@@ -102,7 +93,6 @@ ${Footer.print()}
                     accountName: document.querySelector("#input-account-name").value,
                     userName: document.querySelector("#input-username").value,
                     password: document.querySelector("#input-password").value,
-                    rePassword: document.querySelector("#input-re-password").value,
                     email: document.querySelector("#input-email").value,
                     avatar: response.data.url,
                 });

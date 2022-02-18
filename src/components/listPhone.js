@@ -1,4 +1,7 @@
-import { getAllProducts } from "../api/products";
+/* eslint-disable no-plusplus */
+/* eslint-disable eqeqeq */
+/* eslint-disable max-len */
+import { getAllProducts, getProduct } from "../api/products";
 
 const listPhone = {
     async print() {
@@ -14,7 +17,9 @@ const listPhone = {
             lg:grid-cols-4 
             md:grid-cols-3">
 
-            ${data.map(({ title, img, price }) => /* html */`
+            ${data.map(({
+        id, title, img, price,
+    }) => /* html */`
             <div class="product group shadow-2xl text-center rounded-xl p-4 hover:scale-110 ease-in-out duration-500">
               <div class="product__img">
                 <img class="mx-auto"
@@ -28,8 +33,8 @@ const listPhone = {
                 <strong class="text-base text-[#fd475a]">${price} ₫</strong>
               </div>
               <div class="product__btn">
-                <button
-                  class="mx-3 inline-block bg-[#f26629] px-5 py-2 uppercase text-white font-semibold rounded-lg hover:bg-[#30a2e1] ease-in duration-300">Mua
+                <button data-id="${id}"
+                  class="buy-btn mx-3 inline-block bg-[#f26629] px-5 py-2 uppercase text-white font-semibold rounded-lg hover:bg-[#30a2e1] ease-in duration-300">Mua
                   Ngay</button>
               </div>
             </div>
@@ -41,7 +46,106 @@ const listPhone = {
           <!-- End list-product -->
         </section>
       </main>
+
         `;
+    },
+    async afterRender(id) {
+        const mainElement = document.querySelector("main");
+        const buyBtns = document.querySelectorAll(".buy-btn");
+        const { data } = await getProduct(id);
+        mainElement.innerHTML = /* html */`
+        <div class="modal fixed z-[999] inset-0 overflow-y-auto hidden" role="dialog" aria-modal="true">
+        <div class="flex min-h-screen text-center md:block md:px-2 lg:px-4" style="font-size: 0">
+          <div class="hidden fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity md:block" aria-hidden="true"></div>
+          <span class="hidden md:inline-block md:align-middle md:h-screen" aria-hidden="true">&#8203;</span>
+          <div class="flex text-base text-left transform transition w-full md:inline-block md:max-w-2xl md:px-4 md:my-8 md:align-middle lg:max-w-4xl">
+            <div class="w-full rounded relative flex items-center bg-white px-4 pt-14 pb-8 overflow-hidden shadow-2xl sm:px-6 sm:pt-8 md:p-6 lg:p-8">
+              <button type="button" class="modal-close absolute top-4 right-4 text-gray-400 hover:text-gray-500 sm:top-8 sm:right-6 md:top-6 md:right-6 lg:top-8 lg:right-8">
+                <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+              </button>
+      
+              <div class="modal-container w-full grid grid-cols-1 gap-y-8 gap-x-6 items-start sm:grid-cols-12 lg:gap-x-8">
+                <div class="aspect-w-2 aspect-h-3 rounded-lg bg-gray-100 overflow-hidden sm:col-span-4 lg:col-span-5">
+                  <img src="${data.img}" alt="Img" class="object-center object-cover m-auto">
+                </div>
+      
+                <div class="sm:col-span-8 lg:col-span-7">
+                  <h2 class="text-2xl font-extrabold text-gray-900 sm:pr-12">${data.title}</h2>
+      
+                  <section aria-labelledby="information-heading" class="mt-2">
+                    <p class="text-2xl text-[#fd475a]">${data.price} đ</p>
+                  </section>
+      
+                  <section aria-labelledby="options-heading" class="mt-5">
+                    <form>
+                      <!-- Quantity -->
+                      <div>
+                        <h4 class="text-sm text-gray-900 font-medium">Số lượng</h4>
+                        <div class="flex items-center mt-2">
+                          <button id="down-quantity" class="cursor-pointer flex items-center justify-center outline-none border w-8 h-8 text-[rgba(0,0,0,.8)]">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 12H4" />
+                            </svg>
+                          </button>
+                          <input id="input-quantity" type="text" role="spinbutton" aria-valuenow="1" value="1" class="border w-14 h-8 text-base font-normal box-border text-center cursor-text outline-none">
+                          <button id="up-quantity" class="cursor-pointer flex items-center justify-center outline-none border w-8 h-8 text-[rgba(0,0,0,.8)]">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                            </svg>
+                          </button>
+                        </div>
+      
+                      </div>
+      
+                      <button type="submit" class="mt-6 w-full bg-[#f26629] border border-transparent rounded-md py-3 px-8 flex items-center ease-in duration-300 justify-center text-base font-medium text-white hover:bg-[#30a2e1] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Thêm vào giỏ hàng</button>
+                    </form>
+                  </section>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+        `;
+        const modal = document.querySelector(".modal");
+        const modalContainer = document.querySelector(".modal-container");
+        const modalClose = document.querySelector(".modal-close");
+
+        // eslint-disable-next-line no-restricted-syntax
+        for (const buyBtn of buyBtns) {
+            // eslint-disable-next-line no-loop-func
+            buyBtn.addEventListener("click", () => {
+                modal.classList.remove("hidden");
+                modal.classList.add("block");
+            });
+        }
+        modalClose.addEventListener("click", () => {
+            modal.classList.remove("block");
+            modal.classList.add("hidden");
+        });
+        modal.addEventListener("click", () => {
+            modal.classList.remove("block");
+            modal.classList.add("hidden");
+        });
+        modalContainer.addEventListener("click", (e) => {
+            e.stopPropagation();
+        });
+
+        const inputQuantity = document.querySelector("#input-quantity");
+        const upQuantity = document.querySelector("#up-quantity");
+        const downQuantity = document.querySelector("#down-quantity");
+        upQuantity.addEventListener("click", (e) => {
+            e.preventDefault();
+            // eslint-disable-next-line no-plusplus
+            inputQuantity.innerHTML = inputQuantity.value++;
+        });
+        downQuantity.addEventListener("click", (e) => {
+            e.preventDefault();
+            // eslint-disable-next-line no-unused-expressions
+            inputQuantity.value == 1 ? inputQuantity.value = 1 : inputQuantity.innerHTML = inputQuantity.value--;
+        });
     },
 };
 

@@ -35,43 +35,33 @@
   ],
   "products": [
     {
-      "createdAt": "2022-01-15T01:54:24.955Z",
       "title": "Apple iPhone 13 Pro Max",
       "img": "https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png",
       "price": "3000000",
-      "desc": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
       "id": "1"
     },
     {
-      "createdAt": "2022-01-15T01:54:24.955Z",
-      "title": "Apple iPhone 13 Pro Max",
-      "img": "https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png",
-      "price": "3000000",
-      "desc": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+      "title": "Apple iPhone 13 Pro",
+      "img": "https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-16.png",
+      "price": "2000000",
       "id": "2"
     },
     {
-      "createdAt": "2022-01-15T01:54:24.955Z",
-      "title": "Apple iPhone 13 Pro Max",
-      "img": "https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png",
-      "price": "3000000",
-      "desc": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+      "title": "Apple iPhone 13",
+      "img": "https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2022/01/14/ip13.png",
+      "price": "1000000",
       "id": "3"
     },
     {
-      "createdAt": "2022-01-15T01:54:24.955Z",
-      "title": "Apple iPhone 13 Pro Max",
-      "img": "https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png",
-      "price": "3000000",
-      "desc": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+      "title": "Apple iPhone 12 Pro Max",
+      "img": "https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/03/19/iphoone-12.png",
+      "price": "2500000",
       "id": "4"
     },
     {
-      "createdAt": "2022-01-15T01:54:24.955Z",
-      "title": "Apple iPhone 13 Pro Max",
-      "img": "https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/09/15/image-removebg-preview-15.png",
-      "price": "3000000",
-      "desc": "Ergonomic executive chair upholstered in bonded black leather and PVC padded seat and back for all-day comfort and support",
+      "title": "Apple iPhone 11",
+      "img": "https://cdn.hoanghamobile.com/i/productlist/ts/Uploads/2021/03/19/iphone-11.png",
+      "price": "100000",
       "id": "5"
     }
   ],
@@ -81,18 +71,8 @@
       "password": "$2a$10$TAPhimt1vKa3wqrJJn2yxOOMcIH/nMuWiQpoGZC2JQg5jIMPmaDV2",
       "accountName": "admin",
       "userName": "Phạm Văn Quyết",
-      "rePassword": "178202",
       "avatar": "http://res.cloudinary.com/assignmentjs/image/upload/v1644760791/imguser/ijdwimzs4s0jvxrpqcen.png",
       "id": 1
-    },
-    {
-      "email": "linh@gmail.com",
-      "password": "$2a$10$p1YzB.hmvRqOC842T2RtN.SlzdDO5ihpZHqiyUVWnh7es5kFqUMHC",
-      "accountName": "linh",
-      "userName": "Hào",
-      "rePassword": "12345",
-      "avatar": "http://res.cloudinary.com/assignmentjs/image/upload/v1644918829/imguser/enikqjtk2ukxfbcnfabe.png",
-      "id": 2
     }
   ]
 }

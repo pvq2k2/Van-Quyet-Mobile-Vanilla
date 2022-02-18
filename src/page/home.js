@@ -1,3 +1,5 @@
+/* eslint-disable import/no-named-as-default */
+/* eslint-disable import/no-named-as-default-member */
 import Footer from "../components/footer";
 import Header from "../components/header";
 import listPhone from "../components/listPhone";
@@ -19,6 +21,7 @@ const HomePage = {
     afterRender() {
         Slider.afterRender();
         Header.afterRender();
+        listPhone.afterRender();
     },
 };
 
