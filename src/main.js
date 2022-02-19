@@ -10,6 +10,7 @@ import AccountsAdminPage from "./page/admin/users";
 import UserAdd from "./page/admin/users/userAdd";
 import UserEdit from "./page/admin/users/userEdit";
 import HomePage from "./page/home";
+import ProductPage from "./page/products";
 import SignInPage from "./page/signIn";
 import SignUpPage from "./page/signUp";
 
@@ -25,6 +26,7 @@ router.on({
     "/": () => render(HomePage),
     "/signup": () => render(SignUpPage),
     "/signin": () => render(SignInPage),
+    "/cart": () => render(ProductPage),
     "/admin": () => render(Dashboard),
     "/admin/dashboard": () => render(Dashboard),
     "/admin/products": () => render(ProductsAdminPage),

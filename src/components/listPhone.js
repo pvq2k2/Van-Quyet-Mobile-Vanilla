@@ -1,7 +1,10 @@
 /* eslint-disable no-plusplus */
 /* eslint-disable eqeqeq */
 /* eslint-disable max-len */
+import toastr from "toastr";
 import { getAllProducts, getProduct } from "../api/products";
+import { addToCart } from "../utils/cart";
+import "toastr/build/toastr.min.css";
 
 const listPhone = {
     async print() {
@@ -91,7 +94,7 @@ const listPhone = {
     
                     </div>
     
-                    <button type="submit" class="mt-6 w-full bg-[#f26629] border border-transparent rounded-md py-3 px-8 flex items-center ease-in duration-300 justify-center text-base font-medium text-white hover:bg-[#30a2e1] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Thêm vào giỏ hàng</button>
+                    <button id="btn-add-to-cart" class="mt-6 w-full bg-[#f26629] border border-transparent rounded-md py-3 px-8 flex items-center ease-in duration-300 justify-center text-base font-medium text-white hover:bg-[#30a2e1] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">Thêm vào giỏ hàng</button>
                   </form>
                 </section>
               </div>
@@ -104,12 +107,16 @@ const listPhone = {
     },
     async afterRender() {
         const buyBtns = document.querySelectorAll(".buy-btn");
+        const btnAddToCart = document.querySelector("#btn-add-to-cart");
         const modal = document.querySelector(".modal");
         const modalTitle = modal.querySelector(".modal-title");
         const modalImg = modal.querySelector(".modal-img");
         const modalPrice = modal.querySelector(".modal-price");
         const modalContainer = document.querySelector(".modal-container");
         const modalClose = document.querySelector(".modal-close");
+        const inputQuantity = document.querySelector("#input-quantity");
+        const upQuantity = document.querySelector("#up-quantity");
+        const downQuantity = document.querySelector("#down-quantity");
 
         // eslint-disable-next-line no-restricted-syntax
         for (const buyBtn of buyBtns) {
@@ -122,6 +129,11 @@ const listPhone = {
                 modalPrice.innerHTML = `${data.price} ₫`;
                 modal.classList.remove("hidden");
                 modal.classList.add("block");
+                btnAddToCart.addEventListener("click", () => {
+                    addToCart({ ...data, quantity: inputQuantity.value ? +inputQuantity.value : 1 }, () => {
+                        toastr.success("Add product successfully!");
+                    });
+                });
             });
         }
 
@@ -137,9 +149,6 @@ const listPhone = {
             e.stopPropagation();
         });
 
-        const inputQuantity = document.querySelector("#input-quantity");
-        const upQuantity = document.querySelector("#up-quantity");
-        const downQuantity = document.querySelector("#down-quantity");
         upQuantity.addEventListener("click", (e) => {
             e.preventDefault();
             // eslint-disable-next-line no-plusplus
