@@ -107,6 +107,7 @@ const ProductsAdminPage = {
         btns.forEach((btn) => {
             const { id } = btn.dataset;
             btn.addEventListener("click", () => {
+                // eslint-disable-next-line no-alert
                 const confirm = window.confirm("Are you sure you want to delete this item?");
                 if (confirm) {
                     removeProduct(id);
