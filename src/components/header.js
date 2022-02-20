@@ -226,7 +226,7 @@ const Header = {
               </a>
             </div>
             <div class="cart">
-              <a href="#" class="text-gray-400 hover:text-[#f26629] ease-in-out duration-300">
+              <a href="/cart" class="text-gray-400 hover:text-[#f26629] ease-in-out duration-300">
                 <svg xmlns="http://www.w3.org/2000/svg" class="h-7 w-7" fill="none" viewBox="0 0 24 24"
                   stroke="currentColor">
                   <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"

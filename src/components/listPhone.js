@@ -5,6 +5,9 @@ import toastr from "toastr";
 import { getAllProducts, getProduct } from "../api/products";
 import { addToCart } from "../utils/cart";
 import "toastr/build/toastr.min.css";
+// eslint-disable-next-line import/no-cycle
+import HomePage from "../page/home";
+import { reRender } from "../utils/rerender";
 
 const listPhone = {
     async print() {
@@ -105,7 +108,7 @@ const listPhone = {
     </div>
         `;
     },
-    async afterRender() {
+    afterRender() {
         const buyBtns = document.querySelectorAll(".buy-btn");
         const btnAddToCart = document.querySelector("#btn-add-to-cart");
         const modal = document.querySelector(".modal");
@@ -121,19 +124,27 @@ const listPhone = {
         // eslint-disable-next-line no-restricted-syntax
         for (const buyBtn of buyBtns) {
             // eslint-disable-next-line no-loop-func
+            // eslint-disable-next-line no-loop-func
             buyBtn.addEventListener("click", async () => {
                 const { id } = buyBtn.dataset;
                 const { data } = await getProduct(id);
+                // const myCart = JSON.parse(localStorage.cart).find((item) => item.id === id);
+                // console.log(myCart);
                 modalTitle.innerHTML = data.title;
                 modalImg.src = data.img;
                 modalPrice.innerHTML = `${data.price} ₫`;
-                modal.classList.remove("hidden");
-                modal.classList.add("block");
-                btnAddToCart.addEventListener("click", () => {
+                // modalQuantity.value = myCart.quantity;
+                btnAddToCart.addEventListener("click", (e) => {
+                    e.preventDefault();
                     addToCart({ ...data, quantity: inputQuantity.value ? +inputQuantity.value : 1 }, () => {
                         toastr.success("Add product successfully!");
+                        reRender(HomePage, "#app");
                     });
                 });
+            });
+            buyBtn.addEventListener("click", () => {
+                modal.classList.remove("hidden");
+                modal.classList.add("block");
             });
         }
 
