@@ -1,3 +1,5 @@
+import $ from "jquery";
+import validate from "jquery-validation";
 import toastr from "toastr";
 import { signin } from "../api/users";
 import Footer from "../components/footer";
@@ -63,28 +65,48 @@ const SignInPage = {
         ${Footer.print()}`;
     },
     afterRender() {
-        const formSignIn = document.querySelector("#form-signin");
-        formSignIn.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            try {
-                const { data } = await signin({
-                    email: document.querySelector("#input-email").value,
-                    password: document.querySelector("#input-password").value,
-                });
-                if (data) {
-                    localStorage.setItem("user", JSON.stringify(data.user));
-                    toastr.success("Login successfully!");
-                    setTimeout(() => {
-                        if (data.user.id === 1) {
-                            document.location.href = "/admin";
-                        } else {
-                            document.location.href = "/";
-                        }
-                    }, 2000);
+        $("#form-signin").validate({
+            rules: {
+                "input-email": {
+                    required: true,
+                    email: true,
+                },
+                "input-password": {
+                    required: true,
+                    minLength: 6,
+                },
+            },
+            messages: {
+                "input-email": {
+                    required: "Please enter a valid email address",
+                    email: "Please enter a valid email address",
+                },
+                "input-password": {
+                    required: "Please enter a valid password",
+                    minLength: "Your password must be at least 6 characters long",
+                },
+            },
+            submitHandler: async () => {
+                try {
+                    const { data } = await signin({
+                        email: document.querySelector("#input-email").value,
+                        password: document.querySelector("#input-password").value,
+                    });
+                    if (data) {
+                        localStorage.setItem("user", JSON.stringify(data.user));
+                        toastr.success("Login successfully!");
+                        setTimeout(() => {
+                            if (data.user.id === 1) {
+                                document.location.href = "/admin";
+                            } else {
+                                document.location.href = "/";
+                            }
+                        }, 2000);
+                    }
+                } catch (error) {
+                    toastr.error(`Error: ${error.response.data}`);
                 }
-            } catch (error) {
-                toastr.error(`Error: ${error.response.data}`);
-            }
+            },
         });
     },
 };
